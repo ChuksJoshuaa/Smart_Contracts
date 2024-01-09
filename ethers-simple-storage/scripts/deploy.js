@@ -1,15 +1,11 @@
 const ethers = require("ethers");
 const fs = require("fs-extra");
+require("dotenv").config();
 
 async function main() {
   // http://127.0.0.1:7545
-  const provider = new ethers.providers.JsonRpcProvider(
-    "http://127.0.0.1:7545"
-  );
-  const wallet = new ethers.Wallet(
-    "0xcdef3813abf91d16b14f96e4fe24147740d0f075a080d4f21423a616f4be129f",
-    provider
-  );
+  const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL);
+  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
   const abi = fs.readFileSync(
     "./contracts_SimpleStorage_sol_SimpleStorage.abi",
     "utf8"
@@ -51,7 +47,13 @@ async function main() {
   // console.log(signedTxResponse);
 
   const currentFavoriteNumber = await contract.retrieve();
-  console.log(currentFavoriteNumber.toString());
+  console.log("Current favorite number is " + currentFavoriteNumber.toString());
+
+  const transactionResponse = await contract.store("10");
+  await transactionResponse.wait(1);
+
+  const updatedFavoriteNumber = await contract.retrieve();
+  console.log("Updated favorite number is " + updatedFavoriteNumber.toString());
 }
 
 main()
