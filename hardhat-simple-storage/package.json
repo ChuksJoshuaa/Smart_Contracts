@@ -14,13 +14,19 @@
   },
   "dependencies": {
     "dotenv": "^14.2.0",
+    "ganache-cli": "^6.12.2",
     "prettier-plugin-solidity": "^1.0.0-beta.19"
   },
   "scripts": {
     "lint": "yarn prettier --check .",
     "lint:fix": "yarn prettier --write .",
     "local-dev": "npx hardhat run --network localhost scripts/deploy.js",
-    "dev": "npx hardhat run --network sepolia scripts/deploy.js"
+    "dev": "npx hardhat run --network sepolia scripts/deploy.js",
+    "console": "npx hardhat console --network localhost",
+    "local:test": "npx hardhat test --network localhost",
+    "local:coverage": "npx hardhat coverage --network localhost",
+    "test": "npx hardhat test --network sepolia",
+    "coverage": "npx hardhat coverage --network sepolia"
   },
   "description": "Using hardhat for simple integration",
   "version": "1.0.0",
