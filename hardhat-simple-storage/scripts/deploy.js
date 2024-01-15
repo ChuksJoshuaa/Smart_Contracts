@@ -1,7 +1,7 @@
 const { ethers, run, network } = require('hardhat')
 
-// const ChainId = 1337
-const ChainId = 11155111
+const ChainId = 1337
+// const ChainId = 11155111
 
 const verify = async (contractAddress, args) => {
     console.log('Verying contract...')
@@ -27,7 +27,6 @@ const main = async () => {
     await simpleStorage.deployed()
 
     console.log('Deployed contract to: ' + simpleStorage.address)
-
     if (network.config.chainId === ChainId && process.env.ETHERSCAN_API_KEY) {
         await simpleStorage.deployTransaction.wait(6)
         await verify(simpleStorage.address, [])

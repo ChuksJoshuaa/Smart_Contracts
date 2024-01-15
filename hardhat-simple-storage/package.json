@@ -33,6 +33,9 @@
   "directories": {
     "test": "test"
   },
+  "solidity-coverage": {
+    "port": 8555
+  },
   "author": "",
   "license": "ISC"
 }
