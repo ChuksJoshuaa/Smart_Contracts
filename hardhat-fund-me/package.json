@@ -17,12 +17,15 @@
     "solidity-coverage": "^0.7.18"
   },
   "scripts": {
-    "test": "hardhat test",
+    "deploy": "npx hardhat deploy --tags",
     "dev": "npx hardhat deploy --network sepolia",
     "test:staging": "hardhat test --network sepolia",
     "lint": "solhint 'contracts/**/*.sol'",
     "lint:fix": "solhint 'contracts/**/*.sol' --fix",
     "format": "prettier --write .",
-    "coverage": "hardhat coverage"
+    "local:test": "npx hardhat test --network localhost",
+    "local:coverage": "npx hardhat coverage --network localhost",
+    "test": "npx hardhat test --network sepolia",
+    "coverage": "npx hardhat coverage --network sepolia"
   }
 }

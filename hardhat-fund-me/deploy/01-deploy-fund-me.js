@@ -3,7 +3,7 @@ const { network } = require("hardhat")
 const { networkConfig, developmentChains } = require("../helper-hardhat-config")
 const verify = require("../utils/verify")
 
-const deployFunc = async ({ getNamedAccounts, deployments }) => {
+module.exports = async ({ getNamedAccounts, deployments }) => {
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
     const chainId = network.config.chainId
@@ -40,6 +40,4 @@ const deployFunc = async ({ getNamedAccounts, deployments }) => {
 
     log("--------------------------------------------")
 }
-
-module.exports.default = deployFunc
 module.exports.tags = ["all", "fundme"]
