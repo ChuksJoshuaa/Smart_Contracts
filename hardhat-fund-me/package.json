@@ -24,8 +24,12 @@
     "lint:fix": "solhint 'contracts/**/*.sol' --fix",
     "format": "prettier --write .",
     "local:test": "npx hardhat test --network localhost",
+    "single:test": "npx hardhat test --grep",
     "local:coverage": "npx hardhat coverage --network localhost",
     "test": "npx hardhat test --network sepolia",
     "coverage": "npx hardhat coverage --network sepolia"
+  },
+  "dependencies": {
+    "ganache-cli": "^6.12.2"
   }
 }
